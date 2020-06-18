@@ -25,3 +25,22 @@ func TestAnagram(t *testing.T) {
 	res := anagram(anagrams)
 	require.Equal(t, expected, res)
 }
+
+func BenchmarkAnagram(b *testing.B) {
+	/*
+		BenchmarkAnagram
+		BenchmarkAnagram-8   	  180724	      5961 ns/op	    1212 B/op	      28 allocs/op
+	*/
+	anagrams := []string{
+		"act",
+		"cat",
+		"tree",
+		"race",
+		"care",
+		"acre",
+		"bee",
+	}
+	for i := 0; i < b.N; i++ {
+		anagram(anagrams)
+	}
+}

@@ -15,22 +15,25 @@ func anagram(in []string) [][]string {
 	out := make([][]string, 0)
 
 	// Populate wordIndex, O(n)
+	// Keep track of order (ensure stable algorithm)
+	// Memory O(n+u) where u are unique hashes
+	order := make([]string, 0)
 	for i, word := range in {
 		h := hash(string(sorting.QSortStr(copyStringToRunSlice(word))))
 		if _, ok := wordIndex[h]; !ok {
 			wordIndex[h] = make([]int, 0)
+			order = append(order, h)
 		}
 		wordIndex[h] = append(wordIndex[h], i)
 	}
 
 	// Turn index into word list
-	i := 0
-	for _, indices := range wordIndex {
+	for i, h := range order {
+		indices := wordIndex[h]
 		out = append(out, make([]string, len(indices)))
 		for j, index := range indices {
 			out[i][j] = in[index]
 		}
-		i++
 	}
 	return out
 }
