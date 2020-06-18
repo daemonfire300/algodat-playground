@@ -47,7 +47,7 @@ func copyStringToRunSlice(word string) []rune {
 }
 
 func hash(word string) string {
-	return fmt.Sprintf("%x", sha1.Sum([]byte(word)))
+	return hashWithCache(word)
 }
 
 var hashCache = make(map[string]string)

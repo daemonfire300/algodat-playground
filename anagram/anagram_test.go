@@ -30,6 +30,8 @@ func BenchmarkAnagram(b *testing.B) {
 	/*
 		BenchmarkAnagram
 		BenchmarkAnagram-8   	  180724	      5961 ns/op	    1212 B/op	      28 allocs/op
+		BenchmarkAnagram
+		BenchmarkAnagram-8   	  622585	      1758 ns/op	     489 B/op	      14 allocs/op
 	*/
 	anagrams := []string{
 		"act",
